@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>學習筆記平台</title>
+    <style>
+        body { font-family: "Noto Sans TC", sans-serif; margin: 40px; background: #fafafa; }
+        h1 { color: #333; }
+        .note { border: 1px solid #ddd; background: white; padding: 20px; margin: 10px 0; border-radius: 8px; }
+        .note h2 { margin: 0; color: #007bff; }
+        a { text-decoration: none; color: #007bff; }
+        a.button { background: #007bff; color: white; padding: 8px 12px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>📘 學習筆記平台</h1>
+    <a href="{{ url_for('new_note') }}" class="button">➕ 新增筆記</a>
+
+    {% for note in notes %}
+    <div class="note">
+        <h2>{{ note.title }}</h2>
+        <p><b>作者：</b>{{ note.author }}</p>
+        <p>{{ note.content }}</p>
+    </div>
+    {% else %}
+    <p>目前沒有任何筆記。</p>
+    {% endfor %}
+</body>
+</html>
